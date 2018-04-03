@@ -1,0 +1,96 @@
+body {
+    display : flex ;
+    flex-direction : column ;
+    min-height : 100vh ;
+    margin : 0 ;
+    padding : 0 ;
+    box-sizing : border-box ;
+    font-family : "sans-serif" ;
+}
+
+header {
+    border-bottom : 4px solid hsl(200, 100%, 38%) ;
+    color : white ;
+    padding : 15px ;
+}
+
+header > .container, footer > .container {
+    display : flex ;
+    justify-content : space-between ;
+    align-items : center ;
+}
+
+footer {
+    border-top : hsl(200, 100%, 38%) solid 4px ;
+    background : hsl(0, 4%, 95%) ;
+    padding : 15px ;
+}
+
+#main {
+    flex-grow : 1 ;
+    background : #fefefe url("/img/design/bg-title3.jpg") right bottom no-repeat ;
+    background-size : auto 100% ;
+}
+
+.container {
+    max-width : 1000px ;
+    margin : auto ;
+}
+
+
+h1 {
+    color : black ;
+    font-size : 1.5rem ;
+    text-transform : uppercase ;
+}
+
+h2 {
+    color : hsl(200, 100%, 38%) ;
+    font-size : 1.25rem ;
+    margin-left : 20px ;
+}
+/* BANNIERE */
+#logo {
+    background : hsl(200, 100%, 38%) ;
+    color : white ;
+    text-transform : uppercase ;
+    font-weight : bold ;
+    font-size : 2rem ;
+    box-shadow : 2px 2px 1px rgba(125, 125, 125, 0.75) ;
+    padding : 5px ;
+    display : inline-block ;
+    transform : rotate(-7deg) ;
+    text-decoration : none ;
+}
+
+nav > ul {
+    list-style-type : none ;
+    margin : 0 ;
+    padding : 0 ;
+}
+
+nav > ul > li {
+    display : inline ;
+}
+
+nav > ul > li > a {
+    text-decoration : none ;
+    text-transform : uppercase ;
+    color:  black ;
+}
+
+nav > ul > li:not(:first-child) {
+    padding-left : 10px ;
+}
+
+footer > nav a {
+    text-decoration : none ;
+    color : hsl(200, 100%, 38%) ;
+    text-transform : capitalize ;
+}
+
+
+a {
+    text-decoration : none ;
+    color : hsl(200, 100%, 38%) ;
+}
