@@ -18,7 +18,6 @@ class CreateImgsTable extends Migration
             $table->string('path');
             $table->string('name');
             $table->string('ext');
-            $table->string('name');
             $table->text('alt');
             $table->boolean('is_enabled');
             $table->timestamps();

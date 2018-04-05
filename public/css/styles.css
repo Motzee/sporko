@@ -1,3 +1,7 @@
+* {
+    box-sizing : border-box ;
+}
+
 body {
     display : flex ;
     flex-direction : column ;
@@ -10,7 +14,7 @@ body {
 
 header {
     border-bottom : 4px solid hsl(200, 100%, 38%) ;
-    color : white ;
+    color : black ;
     padding : 15px ;
 }
 
@@ -37,6 +41,9 @@ footer {
     margin : auto ;
 }
 
+main.container {
+    padding : 0 20px 20px 20px ;
+}
 
 h1 {
     color : black ;
@@ -47,7 +54,6 @@ h1 {
 h2 {
     color : hsl(200, 100%, 38%) ;
     font-size : 1.25rem ;
-    margin-left : 20px ;
 }
 /* BANNIERE */
 #logo {
@@ -93,4 +99,88 @@ footer > nav a {
 a {
     text-decoration : none ;
     color : hsl(200, 100%, 38%) ;
+}
+
+.blue {
+    color : hsl(200, 100%, 38%) ;
+    font-weight : bold ;
+}
+
+
+.bar-edit {
+    display : flex ;
+    justify-content : space-between ;
+}
+
+#listing > li {
+    display : flex ;
+    align-items : center ;
+}
+
+
+/* Images */
+figure > img {
+    border : 2px solid grey ;
+    box-shadow : 2px 2px 1px rgba(125, 125, 125, 0.5) ;
+}
+
+figure.illustration {
+    margin : auto ;
+    text-align : center ;
+}
+figure.illustration > img {
+    max-width : 800px ;
+    max-height : 1000px ;
+}
+
+figure.vignette > img {
+    max-width : 250px ;
+    max-height : 300px ;
+}
+
+
+
+/* Formulaires */
+form {
+    max-width : 600px ;
+    margin : auto ;
+}
+
+.delete-form {
+    margin : none ;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"], input[type="range"], input[type="color"], input[type="search"], select, textarea {
+    width : calc(100% / 3 * 2) ;
+    
+}
+
+.champsform {
+    margin-bottom : 15px ;
+}
+
+.champsform > label {
+    float : left ;
+    width : calc(100% / 3 - 12px) ;
+    text-align : right ;
+    margin-right : 10px ;
+    margin-top : 4px ;
+}
+
+#btnValid {
+    display : inline-block ;
+    margin-left : calc(100% / 3) ;
+    color : white ;
+    font-weight : bold ;
+    font-size : 1.25rem ;
+    background : hsl(200, 100%, 38%) ;
+    text-transform : uppercase ;
+    box-shadow : 2px 2px 1px rgba(125, 125, 125, 0.5) ;
+    padding : 5px 20px 5px 20px ;
+}
+
+/* classes atomiques */
+
+.txt_center {
+    text-align : center ;
 }

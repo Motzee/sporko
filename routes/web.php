@@ -89,17 +89,20 @@ Route::get('/par/{year?}/{tag?}', function ($year = null, $tag = null) {
 Route::get('/daily', 'Controller@dailyTraining')->name('daily');
 
 Route::get('/exercices/{id?}', 'Controller@exercice')->where('id', '[0-9]+');
+ * 
+ */
+
+/* Controllers thématiques */
+Route::resource('programs', 'ProgramsController');
 
 /* Pages généralistes */
 Route::get('/', 'Controller@index')->name('index');
 
 Route::get('/daily', 'Controller@daily')->name('daily');
 
-Route::get('/programs', 'Controller@programs')->name('programs');
-
 Route::get('/exercices/{id?}', 'Controller@exercices')->name('exercices');
 
-Route::get('/login', 'Controller@login')->name('login');
+//Route::get('/login', 'Controller@login')->name('login');
 
 Route::get('/signup', 'Controller@signup')->name('signup');
 
@@ -109,6 +112,8 @@ Route::get('/legalinfos', 'Controller@legalinfos')->name('legalinfos');
 
 /* Pages pour les membres connectés */
 
-Route::get('/params', 'ConnectedController@params')->name('params');
+Route::get('/params', 'ConnectedController@params')->middleware('auth')->name('params');
 
-Route::get('/stats', 'ConnectedController@stats')->name('stats');
+Route::get('/stats', 'ConnectedController@stats')->middleware('auth')->name('stats');
+
+Auth::routes();

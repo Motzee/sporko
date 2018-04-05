@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Exercice extends Model
+class Img extends Model
 {
-    //
+    
 }

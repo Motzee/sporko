@@ -7,7 +7,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-use App\Exercice ;
+use App\Exercise ;
+use App\Img ;
 
 class Controller extends BaseController
 {
@@ -18,8 +19,11 @@ class Controller extends BaseController
     }
     
     public function daily() {
-        $exos = Exercice::all();
+        $exos = Exercise::all();
         $exercices = [] ;
+        $exercices['beginner'] = [] ;
+        $exercices['medium'] = [] ;
+        $exercices['pro'] = [] ;
         
         foreach ($exos as $exo) {
             $exercices["beginner"][] = [
@@ -33,28 +37,24 @@ class Controller extends BaseController
         ]);
     }
     
-    public function programs() {
-        return view('page.programs');
-    }
-    
     public function exercices(int $id = null) {
         if(isset($id) && $id > 0) {
-            $exo = Exercice::findOrFail($id);
+            $exo = Exercise::findOrFail($id);
+            $exo->setImg(Img::findOrFail($exo->id_img));
             
             return view('page.exercice', [
                 "exercice" => $exo
             ]);
         } else {
-            $exos = Exercice::all();
+            $exos = Exercise::all();
+            foreach($exos as $anExo) {
+                $anExo->setImg(Img::findOrFail($anExo->id_img));
+            }
             
             return view('page.exercices', [
                 "exercices" => $exos
             ]);
         }
-    }
-    
-    public function login() {
-        return view('page.login');
     }
     
     public function signup() {
