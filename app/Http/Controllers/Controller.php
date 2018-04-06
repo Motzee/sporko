@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Exercise ;
 use App\Img ;
+use DB ;
 
 class Controller extends BaseController
 {
@@ -45,8 +46,24 @@ class Controller extends BaseController
                 "exercice" => $exo
             ]);
         } else {
+            /*
+            Très mauvaise perf :
             $exos = Exercise::all();
-            
+            */
+
+            /*
+            Deux requêtes :
+            $exos = Exercise::with('img')->get();
+            */
+
+            /*
+            Une seule (mais vérifier dans quel sens on fait cette requête ? Puis bon, tous les champs sont des attributs, sans organisation. Puis à cause des * on a des doublons) :
+            */
+            $exos = DB::table('imgs')
+                ->join('exercises', 'imgs.id', '=', 'exercises.id_img')
+                ->select('exercises.name AS nameexo', 'imgs.name AS nameimg', 'exercises.id AS idexo', 'exercises.*', 'imgs.*')
+                ->get() ;
+
             return view('page.exercices', [
                 "exercices" => $exos
             ]);
