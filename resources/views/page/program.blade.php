@@ -3,10 +3,14 @@
 @section('title', 'Programme sportif : {{ $aProgram->name }}')
 
 @section('content')
+
+{{-- dd($aProgram) --}}
+
 <h1>{{ $aProgram->name }}</h1>
-<p>Créé par {{ $author->name }}</p>
+<p>Créé par {{ $aProgram->user->name }}</p>
 <p>{{ $aProgram->description }}</p>
 
+@auth
 @if($aProgram->id_user === Auth::user()->id )
 <div class="bar-edit">    
     <a href="{{ URL::route('programs.edit', $aProgram->id) }}">Modifier</a>
@@ -16,6 +20,20 @@
         <input type="submit" value="Supprimer" id="btnDelete" />
     </form>
 @endif
+@endauth
+
+<h2>Contenu du programme</h2>
+
+<ul id="listing">
+    @foreach ($aProgram->exercises as $exo)
+    <li>
+        <figure class="vignette"><img src="/img/{{ $exo->img->path }}/{{ $exo->img->name }}.{{ $exo->img->ext }}" alt="{{ $exo->img->alt }}" /></figure>
+        <section><h3><a href="{{ URL::to('exercices/'.$exo->id) }}">{{ $exo->name }}</a></h3>
+            <p>{{ $exo->description }}</p>
+        </section>
+    </li>
+    @endforeach
+    </ul>
 
 
 @endsection

@@ -8,13 +8,17 @@ use App\Img ;
 
 class Exercise extends Model
 {
-    protected $img ;
+   
     
-    public function setImg(Img $img) {
-        $this->img = $img ;
+    /* N-to-M*/
+    
+    public function programs() {
+        return $this->belongsToMany('App\Program', 'exercise_program', 'id_exercise', 'id_program');
     }
-    
-    public function getImg() {
-        return $this->img ;
+
+    /* one-to-M*/
+
+    public function img() {
+        return $this->belongsTo('App\Img', "id_img");
     }
 }

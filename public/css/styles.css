@@ -32,7 +32,7 @@ footer {
 
 #main {
     flex-grow : 1 ;
-    background : #fefefe url("/img/design/bg-title3.jpg") right bottom no-repeat ;
+    background : #fefefe url("/img/design/bg-title3.jpg") right bottom no-repeat fixed ;
     background-size : auto 100% ;
 }
 

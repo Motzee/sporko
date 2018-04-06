@@ -9,6 +9,8 @@ use Validator ;
 
 use App\Program ;
 use App\User ;
+use App\Exercise ;
+use App\Img ;
 
 class ProgramsController extends Controller
 {
@@ -86,14 +88,11 @@ class ProgramsController extends Controller
     {
         $program = Program::findOrFail($id) ;
         
-        $author = User::findOrFail($program->id_user) ;
-        
         if($program == null || $program->is_enabled != 1) {
             return redirect()->route('programs.index');
         } else {
             return view('page.program', [
-                "aProgram" => $program,
-                "author" => $author
+                "aProgram" => $program
             ]);
         }
         

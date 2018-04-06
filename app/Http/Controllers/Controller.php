@@ -40,16 +40,12 @@ class Controller extends BaseController
     public function exercices(int $id = null) {
         if(isset($id) && $id > 0) {
             $exo = Exercise::findOrFail($id);
-            $exo->setImg(Img::findOrFail($exo->id_img));
             
             return view('page.exercice', [
                 "exercice" => $exo
             ]);
         } else {
             $exos = Exercise::all();
-            foreach($exos as $anExo) {
-                $anExo->setImg(Img::findOrFail($anExo->id_img));
-            }
             
             return view('page.exercices', [
                 "exercices" => $exos

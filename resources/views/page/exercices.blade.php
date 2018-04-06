@@ -8,7 +8,7 @@
     <ul id="listing">
     @foreach ($exercices as $exo)
     <li>
-        <figure class="vignette"><img src="/img/{{ $exo->getImg()->path }}/{{ $exo->getImg()->name }}.{{ $exo->getImg()->ext }}" alt="{{ $exo->getImg()->alt }}" /></figure>
+        <figure class="vignette"><img src="/img/{{ $exo->img->path }}/{{ $exo->img->name }}.{{ $exo->img->ext }}" alt="{{ $exo->img->alt }}" /></figure>
         <section><h2><a href="{{ URL::to('exercices/'.$exo->id) }}">{{ $exo->name }}</a></h2>
             <p>{{ $exo->description }}</p>
         </section>
