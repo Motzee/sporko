@@ -11,13 +11,18 @@ class ConnectedController extends BaseController {
     
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function params() {
-        return view('connected.params');
+        return view('pages.params');
     }
     
     
     public function stats() {
-        return view('connected.stats');
+        return view('pages.stats');
     }
     
 }

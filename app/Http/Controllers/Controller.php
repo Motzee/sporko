@@ -7,19 +7,24 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-use App\Exercice ;
+use App\Exercise ;
+use App\Img ;
+use DB ;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
     public function index() {
-        return view('page.index');
+        return view('pages.index');
     }
     
     public function daily() {
-        $exos = Exercice::all();
+        $exos = Exercise::all();
         $exercices = [] ;
+        $exercices['beginner'] = [] ;
+        $exercices['medium'] = [] ;
+        $exercices['pro'] = [] ;
         
         foreach ($exos as $exo) {
             $exercices["beginner"][] = [
@@ -28,44 +33,20 @@ class Controller extends BaseController
             ] ;
         }
         
-        return view('page.daily', [
+        return view('pages.daily', [
             'exercices' => $exercices
         ]);
     }
     
-    public function programs() {
-        return view('page.programs');
-    }
-    
-    public function exercices(int $id = null) {
-        if(isset($id) && $id > 0) {
-            $exo = Exercice::findOrFail($id);
-            
-            return view('page.exercice', [
-                "exercice" => $exo
-            ]);
-        } else {
-            $exos = Exercice::all();
-            
-            return view('page.exercices', [
-                "exercices" => $exos
-            ]);
-        }
-    }
-    
-    public function login() {
-        return view('page.login');
-    }
-    
     public function signup() {
-        return view('page.signup');
+        return view('pages.signup');
     }
     
     public function credits() {
-        return view('page.credits');
+        return view('pages.credits');
     }
     
     public function legalinfos() {
-        return view('page.legalinfos');
+        return view('pages.legalinfos');
     }
 }

@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    /* M-to-one*/
+    
+    public function programs() {
+        return $this->hasMany('App\Program', 'id_user');
+    }
+
 }
