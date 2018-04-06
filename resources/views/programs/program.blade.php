@@ -6,7 +6,7 @@
 
 {{-- dd($aProgram) --}}
 
-<h1>{{ $aProgram->name }}</h1>
+<h1>{{ $aProgram->nameprog }}</h1>
 <p>Créé par {{ $aProgram->user->name }}</p>
 <p>{{ $aProgram->description }}</p>
 
@@ -19,6 +19,7 @@
         <input type="hidden" name="_method" value="DELETE" />
         <input type="submit" value="Supprimer" id="btnDelete" />
     </form>
+</div>
 @endif
 @endauth
 
@@ -28,7 +29,7 @@
     @foreach ($aProgram->exercises as $exo)
     <li>
         <figure class="vignette"><img src="/img/{{ $exo->img->path }}/{{ $exo->img->name }}.{{ $exo->img->ext }}" alt="{{ $exo->img->alt }}" /></figure>
-        <section><h3><a href="{{ URL::to('exercices/'.$exo->id) }}">{{ $exo->name }}</a></h3>
+        <section><h3><a href="{{ URL::route('exercises.show', $exo->id) }}">{{ $exo->name }}</a></h3>
             <p>{{ $exo->description }}</p>
         </section>
     </li>

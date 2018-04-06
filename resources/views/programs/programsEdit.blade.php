@@ -10,7 +10,7 @@
     <input type="hidden" name="_method" value="PUT" />
     
     <div class="champsform"><label for="name" required>Nom du programme</label>
-        <input id="name" name="name" type="text" value="{{ $program->description }}" required />
+        <input id="name" name="name" type="text" value="{{ $program->name }}" required />
     </div>
     
        

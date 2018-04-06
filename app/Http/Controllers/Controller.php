@@ -16,7 +16,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
     public function index() {
-        return view('page.index');
+        return view('pages.index');
     }
     
     public function daily() {
@@ -33,52 +33,20 @@ class Controller extends BaseController
             ] ;
         }
         
-        return view('page.daily', [
+        return view('pages.daily', [
             'exercices' => $exercices
         ]);
     }
     
-    public function exercices(int $id = null) {
-        if(isset($id) && $id > 0) {
-            $exo = Exercise::findOrFail($id);
-            
-            return view('page.exercice', [
-                "exercice" => $exo
-            ]);
-        } else {
-            /*
-            Très mauvaise perf :
-            $exos = Exercise::all();
-            */
-
-            /*
-            Deux requêtes :
-            $exos = Exercise::with('img')->get();
-            */
-
-            /*
-            Une seule (mais vérifier dans quel sens on fait cette requête ? Puis bon, tous les champs sont des attributs, sans organisation. Puis à cause des * on a des doublons) :
-            */
-            $exos = DB::table('imgs')
-                ->join('exercises', 'imgs.id', '=', 'exercises.id_img')
-                ->select('exercises.name AS nameexo', 'imgs.name AS nameimg', 'exercises.id AS idexo', 'exercises.*', 'imgs.*')
-                ->get() ;
-
-            return view('page.exercices', [
-                "exercices" => $exos
-            ]);
-        }
-    }
-    
     public function signup() {
-        return view('page.signup');
+        return view('pages.signup');
     }
     
     public function credits() {
-        return view('page.credits');
+        return view('pages.credits');
     }
     
     public function legalinfos() {
-        return view('page.legalinfos');
+        return view('pages.legalinfos');
     }
 }

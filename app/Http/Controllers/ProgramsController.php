@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Redirect;
 use Illuminate\Support\Facades\Auth ;
-use Validator ;
 
-use App\Program ;
+use Validator ;
+use DB ;
+
+use App\Program ;/*
 use App\User ;
 use App\Exercise ;
 use App\Img ;
+*/
 
 class ProgramsController extends Controller
 {
@@ -31,7 +34,7 @@ class ProgramsController extends Controller
             ->orderBy('created_at', 'desc')
             ->get() ;
         
-        return view('page.programs', [
+        return view('programs.programs', [
             "programs" => $programs
         ]);
     }
@@ -43,7 +46,7 @@ class ProgramsController extends Controller
      */
     public function create() //get sur /programs/create
     {
-        return view('connected.programsCreate');
+        return view('programs.programsCreate');
     }
 
     /**
@@ -91,7 +94,7 @@ class ProgramsController extends Controller
         if($program == null || $program->is_enabled != 1) {
             return redirect()->route('programs.index');
         } else {
-            return view('page.program', [
+            return view('programs.program', [
                 "aProgram" => $program
             ]);
         }
@@ -106,7 +109,7 @@ class ProgramsController extends Controller
      */
     public function edit(Program $program)
     {
-        return view('connected.programsEdit', compact(['program']));
+        return view('programs.programsEdit', compact(['program']));
     }
 
     /**

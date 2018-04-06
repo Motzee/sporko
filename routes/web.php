@@ -95,14 +95,12 @@ Route::get('/exercices/{id?}', 'Controller@exercice')->where('id', '[0-9]+');
 /* Controllers thématiques */
 Route::resource('programs', 'ProgramsController');
 
+Route::resource('exercises', 'ExercisesController');
+
 /* Pages généralistes */
 Route::get('/', 'Controller@index')->name('index');
 
 Route::get('/daily', 'Controller@daily')->name('daily');
-
-Route::get('/exercices/{id?}', 'Controller@exercices')->name('exercices');
-
-//Route::get('/login', 'Controller@login')->name('login');
 
 Route::get('/signup', 'Controller@signup')->name('signup');
 
@@ -117,3 +115,4 @@ Route::get('/params', 'ConnectedController@params')->middleware('auth')->name('p
 Route::get('/stats', 'ConnectedController@stats')->middleware('auth')->name('stats');
 
 Auth::routes();
+

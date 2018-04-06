@@ -17,12 +17,12 @@ class ConnectedController extends BaseController {
     }
     
     public function params() {
-        return view('connected.params');
+        return view('pages.params');
     }
     
     
     public function stats() {
-        return view('connected.stats');
+        return view('pages.stats');
     }
     
 }

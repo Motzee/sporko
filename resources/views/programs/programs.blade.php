@@ -7,7 +7,7 @@
     
     <ul>
     @foreach ($programs as $aProgram)
-    <li><a href="{{ URL::to('programs/'.$aProgram->id) }}">{{ $aProgram->name }}</a> : {{ $aProgram->description }}</li>
+    <li><a href="{{ URL::route('programs.show', $aProgram->id) }}">{{ $aProgram->name }}</a> : {{ $aProgram->description }}</li>
     @endforeach
     </ul>
 
